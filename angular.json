@@ -24,9 +24,12 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+			        "node_modules/jsplumb/css/jsplumbtoolkit-defaults.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jsplumb/dist/js/jsplumb.js"	
+            ]
           },
           "configurations": {
             "production": {
