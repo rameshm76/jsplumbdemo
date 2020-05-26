@@ -1,5 +1,5 @@
 * {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 html, body {
@@ -8,49 +8,48 @@ html, body {
     padding: 10px;
 }
 
+.title {
+    color: #7c7777; 
+}
 .container {
-    border: 1px solid cornsilk;
+    position: relative;
     width: 100%;
-    height: 100%;
+    height: 90%;
 }
 
 .group {
-    background-color: WhiteSmoke;
     min-height: 150px;
     border-radius: 2px;
-    border: 2px solid #9e9e9e;
+    border: 1px solid #c9c9c9;
     font-size: 12px;
     cursor: move;
     z-index: 10;
-    margin: 2px;
+    margin: 10px;
 }
 
 .group-content {
     height: 100px;
     display: flex;
-    justify-content: space-around; 
-    flex-wrap:  wrap;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }
 
 .group-title {
     margin: 0;
     align-items: center;
-    background-color: #9e9e9e;
-    color: #fff;
+    color: #7c7777; 
     font-size: 13px;
-    letter-spacing: 4px;
     text-transform: uppercase;
-    text-indent: 7px;
     padding: 7px;
     box-sizing: border-box;
 }
 
 .item {
-    border: 1px solid blueviolet;
-    background: tomato;
-    width: 100px;
-    height: 100px;
-    line-height: 90px;
-    text-align: center;
+    border: 1px solid #c9c9c9;
+    color: #7c7777; 
+    width: 150px;
+    height: 75px;
+    line-height: 75px;
     margin: 10px;
+    text-align: center;
 }

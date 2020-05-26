@@ -1,0 +1,8 @@
+.node {
+    position: absolute;
+    width: 150px;
+    height: 50px;
+    padding: 4px;
+    box-shadow: 0 10px 40px 0 #cccccc;
+    text-align: center;
+}

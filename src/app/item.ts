@@ -1,7 +1,9 @@
 export class Item {
     constructor(
-        private id: string,
-        private name: string,
-        private left: number,
-        private top: number) { }
+        public id: string,
+        public name: string,
+        public group: string,
+        public left?: number,
+        public top?: number
+        ) { }
 }

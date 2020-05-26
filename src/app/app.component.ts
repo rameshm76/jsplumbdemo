@@ -11,251 +11,55 @@ import { Item } from './item';
 export class AppComponent implements OnInit, AfterViewInit {
 
   jsPlumbInstance: any;
-
+  nodes = [];
+  connections = [];
+  groups = [];
   data = {
     nodes: [
-      {
-        id: 'window1',
-        name: '1',
-        left: 10,
-        top: 20,
-        group: 'one'
-      },
-      {
-        id: 'window2',
-        name: '2',
-        left: 140,
-        top: 50,
-        group: 'one'
-      },
-      {
-        id: 'window3',
-        name: '3',
-        left: 450,
-        top: 50,
-        group: 'three'
-      },
-      {
-        id: 'window4',
-        name: '4',
-        left: 110,
-        top: 370,
-        group: 'three'
-      },
-      {
-        id: 'window5',
-        name: '5',
-        left: 140,
-        top: 150,
-        group: 'one'
-      },
-      {
-        id: 'window6',
-        name: '6',
-        left: 50,
-        top: 50,
-        group: 'two'
-      },
-      {
-        id: 'window7',
-        name: '7',
-        left: 50,
-        top: 450,
-        group: 'three'
-      }
+      { id: 'process1', name: 'Process 1', group: 'processGroup1', top: 20, left: 20 },
+      { id: 'process2', name: 'Process 2', group: 'processGroup1', top: 453, left: 546 },
+      { id: 'process3', name: 'Process 3', group: 'processGroup2', top: 23, left: 290 },
+      { id: 'process4', name: 'Process 4', group: 'processGroup2', top: 209, left: 55 },
+      { id: 'process5', name: 'Process 5', group: 'processGroup2', top: 13, left: 580 },
+      { id: 'process6', name: 'Process 6', group: 'processGroup3', top: 384, left: 29 },
+      { id: 'process7', name: 'Process 7', group: 'processGroup3', top: 198, left: 335 }
     ],
     edges: [
-      {
-        source: 'window1',
-        target: 'window3',
-        data: {}
-      },
-      {
-        source: 'window1',
-        target: 'window4',
-        data: {}
-      },
-      {
-        source: 'window3',
-        target: 'window5',
-        data: {}
-      },
-      {
-        source: 'window4',
-        target: 'window6',
-        data: {}
-      },
-      {
-        source: 'window5',
-        target: 'window2',
-        data: {}
-      },
-      {
-        source: 'window6',
-        target: 'window2',
-        data: {}
-      }
-    ],
-    ports: [],
-    groups: [
-      {
-        id: 'one',
-        title: 'Group 1',
-        left: 100,
-        top: 50
-      },
-      {
-        id: 'two',
-        title: 'Group 2',
-        left: 450,
-        top: 250,
-        type: 'constrained'
-      },
-      {
-        id: 'three',
-        title: 'Group 3',
-        left: 450,
-        top: 250,
-        type: 'constrained'
-      }
-    ]
-  };
-
-  data1 = {
-    nodes: [
-      {
-        id: 'window1',
-        name: '1',
-        left: 10,
-        top: 20,
-        group: 'one'
-      },
-      {
-        id: 'window2',
-        name: '2',
-        left: 140,
-        top: 50,
-        group: 'one'
-      },
-      {
-        id: 'window3',
-        name: '3',
-        left: 450,
-        top: 50,
-        group: 'three'
-      },
-      {
-        id: 'window4',
-        name: '4',
-        left: 110,
-        top: 370,
-        group: 'three'
-      },
-      {
-        id: 'window5',
-        name: '5',
-        left: 140,
-        top: 150,
-        group: 'one'
-      },
-      {
-        id: 'window6',
-        name: '6',
-        left: 50,
-        top: 50,
-        group: 'two'
-      },
-      {
-        id: 'window7',
-        name: '7',
-        left: 50,
-        top: 450,
-        group: 'three'
-      }
+      { source: 'process1', target: 'process2' },
+      { source: 'process2', target: 'process3' },
+      { source: 'process1', target: 'process4' },
+      { source: 'process3', target: 'process4' },
+      { source: 'process4', target: 'process5' },
+      { source: 'process3', target: 'process6' },
+      { source: 'process5', target: 'process7' },
+      { source: 'process6', target: 'process7' }
     ],
     connections: [
-      {
-        uuids: [
-          'window1',
-          'window3'
-        ]
-      },
-      {
-        uuids: [
-          'window1',
-          'window4',
-        ]
-      },
-      {
-        uuids: [
-          'window3',
-          'window5',
-        ]
-      },
-      {
-        uuids: [
-          'window4',
-          'window6',
-        ]
-      },
-      {
-        uuids: [
-          'window5',
-          'window2',
-        ]
-      },
-      {
-        uuids: [
-          'window6',
-          'window2',
-        ]
-      }
+      { uuids: ['process1_bottom', 'process3_top'] },
+      { uuids: ['process1_bottom', 'process4_top'] },
+      { uuids: ['process3_bottom', 'process5_top'] },
+      { uuids: ['process4_bottom', 'process6_top'] },
+      { uuids: ['process5_bottom', 'process2_top'] },
+      { uuids: ['process6_bottom', 'process2_top'] }
     ],
     ports: [],
     groups: [
-      {
-        id: 'one',
-        title: 'Group 1',
-        left: 100,
-        top: 50
-      },
-      {
-        id: 'two',
-        title: 'Group 2',
-        left: 450,
-        top: 250,
-        type: 'constrained'
-      },
-      {
-        id: 'three',
-        title: 'Group 3',
-        left: 450,
-        top: 250,
-        type: 'constrained'
-      }
+      { id: 'processGroup1', title: 'Process Group 1', left: 800, top: 150 },
+      { id: 'processGroup2', title: 'Process Group 2', left: 800, top: 250 },
+      { id: 'processGroup3', title: 'Process Group 3', left: 800, top: 350 }
     ]
   };
 
   constructor(private cd: ChangeDetectorRef, private el: ElementRef) { }
 
   ngOnInit(): void {
-
+    this.fillFromJson();
   }
 
   ngAfterViewInit() {
-    // for (const group of this.data.groups) {
-    //   this.groups.set(group.id, new Group(group.id, group.title, group.left, group.top, group?.type));
-    // }
-
-    // for (const node of this.data.nodes) {
-    //   const g = this.groups.get(node.group);
-    //   if (g) {
-    //     g.add(new Item(node.id, node.name, node.left, node.top));
-    //   }
-    // }
-    // console.log(this.groups.values());
-
-    this.jsPlumbInstance = jsPlumb.getInstance({});
+    this.jsPlumbInstance = jsPlumb.getInstance({
+      PaintStyle: { strokeWidth: 2, stroke: '#c9c9c9' },
+    });
     console.log(this.jsPlumbInstance.Defaults);
 
     this.jsPlumbInstance.setContainer('container');
@@ -263,15 +67,21 @@ export class AppComponent implements OnInit, AfterViewInit {
       ConnectionsDetachable: false
     });
 
-    // for (const edge of this.data.edges) {
-    //   this.jsPlumbInstance.connect({
-    //     source: edge.source,
-    //     target: edge.target,
-    //     endpoint: 'Rectangle',
-    //     anchors: ['Right', 'Left']
-    //   });
-    // }
-    this.jsPlumbInstance.connect({ uuids: this.data1.connections.uuids});
+    for (const edge of this.data.edges) {
+      this.jsPlumbInstance.connect({
+        source: edge.source,
+        target: edge.target,
+        endpoint: ['Dot', { radius: 5 }],
+        anchors: ['Right', 'Left'],
+        overlays: [ ['Arrow', { width: 12, length: 12, location: 0.5 }] ]
+      });
+    }
+  }
+
+  fillFromJson() {
+    this.nodes = this.data.nodes;
+    this.connections = this.data.connections;
+    this.groups = this.data.groups;
   }
 
   filterItemsInGroup(group: string) {

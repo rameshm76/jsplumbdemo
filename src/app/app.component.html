@@ -1,8 +1,11 @@
 <div class="text-center title">
-  JSPlumb Demo
+  Process Flow
 </div>
 <hr>
 <div class="container">
+  <button (click)="nodeContainer.addNode()">Create new node</button>
+  <app-nodes-container #nodeContainer [nodes]="nodes" [connections]="connections" [groups]="groups">
+  </app-nodes-container>
   <div class="group" id="{{group.id}}" *ngFor="let group of data.groups; index as groupIndex;">
     <div class="group-title">{{group.title}}</div>
     <div class="group-content">
